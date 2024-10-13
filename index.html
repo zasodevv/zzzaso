@@ -3,87 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Important Notice - Cease and Desist</title>
+    <title>Snowfall Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #121212; /* Dark background */
-            color: #ffffff; /* White text */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #1b1f23; /* Slightly lighter than the background */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Luckiest Guy', cursive;
+            overflow: hidden;
+        }
+
+        #snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000;
+            border: 2px solid #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            padding: 20px;
             text-align: center;
+            z-index: 2;
         }
 
-        h1 {
-            color: #00E676; /* Bright green for emphasis */
-            font-size: 36px;
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
         }
 
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
+        .username {
+            margin: 10px 0;
+            font-size: 24px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 5px rgba(255, 204, 0, 0.7);
+            animation: pulse 1s infinite alternate;
         }
 
-        .highlight {
-            color: #00B0FF; /* Bright blue for important info */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
         }
 
-        .notice {
-            background-color: #333333;
-            padding: 15px;
-            border-left: 4px solid #00E676;
-            margin: 20px 0;
-            font-size: 16px;
-        }
-
-        .footer {
-            margin-top: 30px;
-            color: #888;
-            font-size: 14px;
-        }
-
-        a {
-            color: #00E676;
+        .social-links a {
+            color: #fff;
             text-decoration: none;
+            margin: 0 10px;
         }
 
-        a:hover {
+        .social-links a:hover {
             text-decoration: underline;
         }
 
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Important Notice</h1>
-        <p>Dear zware customers,</p>
-
-        <p>We regret to inform you that due to a recent <span class="highlight">Cease and Desist</span> order from Epic Games, we have been forced to take down all of our Fortnite cheats and related products. This action is beyond our control and was a direct result of legal action taken by Epic Games to protect their intellectual property.</p>
-
-        <div class="notice">
-            <p><strong>What does this mean for you?</strong></p>
-            <p>All current services related to Fortnite cheats have been permanently discontinued. You will no longer be able to access, purchase, or use these products.</p>
-        </div>
-
-        <p>We understand that this may be disappointing news for many of you, but it's important to recognize the risks involved with the creation and distribution of cheat software. Epic Games has been particularly aggressive in enforcing their policies, and we must comply with their legal demands.</p>
-
-        <p>If you have any questions or concerns, feel free to reach out to our support team at <a href="mailto:zasodev@gmail.com">zasodev@gmail.com</a>. We are doing our best to handle this situation smoothly for all our customers.</p>
-
-        <p>Thank you for your understanding and support.</p>
-
-        <div class="footer">
-            <p>&copy; 2024 Zware . All rights reserved.</p>
+    <div id="snow"></div>
+    <div class="panel">
+        <img src="https://cdn.discordapp.com/attachments/1216237099163062415/1294867214549258300/standard_2.gif?ex=670c9291&is=670b4111&hm=85d896aa341b8a48e0815afb48a27903098faaf48698537fddbe5027de7d8330&" alt="Profile Picture" class="profile-pic">
+        <h2 class="username">zaso</h2>
+        <div class="social-links">
+            <a href="https://tiktok.com/@zasowithlv" target="_blank">Tiktok</a>
+            <a href="https://discord.gg/2vs8SKTBUg" target="_blank">Discord</a>
+            <a href="https://zasodev.xyz" target="_blank">Real site</a>
         </div>
     </div>
+
+    <audio autoplay loop>
+        <source src="https://drive.google.com/uc?export=download&id=16QeW7LVd2m5bu7GvPiLIyd0lywmWbwfw" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const snowContainer = document.getElementById('snow');
+            const numSnowflakes = 100;
+
+            for (let i = 0; i < numSnowflakes; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+                snowflake.style.opacity = Math.random();
+                snowContainer.appendChild(snowflake);
+            }
+        });
+    </script>
 </body>
 </html>
